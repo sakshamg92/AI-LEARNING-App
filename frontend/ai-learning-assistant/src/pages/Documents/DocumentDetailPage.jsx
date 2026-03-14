@@ -6,6 +6,8 @@ import toast from "react-hot-toast";
 import { ArrowLeft, ExternalLink } from "lucide-react";
 import PageHeader from "../../components/common/PageHeader";
 import Tabs from "../../components/common/Tabs";
+import ChatInterface from "../../components/chat/ChatInterface";
+import AIActions from "../../components/ai/AIActions";
 
 const DocumentDetailPage = () => {
   const { id } = useParams();
@@ -54,25 +56,25 @@ const DocumentDetailPage = () => {
     const pdfUrl = getPdfUrl();
 
     return (
-      <div className="bg-white border border-gray-300 rounded-lg p-4 overflow-hidden shadow-sm">
-        <div className="flex items-center justify-between p-4 bg-gray-300">
-          <span className="text-sm font-medium text-gray-700">
+      <div className="bg-white border border-slate-200 rounded-xl shadow-sm overflow-hidden">
+        <div className="flex items-center justify-between px-6 py-4 bg-slate-100 border-b border-slate-200">
+          <span className="text-sm font-medium text-slate-700">
             Document Viewer
           </span>
           <a
             href={pdfUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 text-sm text-blue-600 hover:text-blue-700 font-medium transition-colors"
+            className="flex items-center gap-1.5 text-sm text-blue-600 hover:text-blue-700 font-medium"
           >
             <ExternalLink size={16} />
             Open in new tab
           </a>
         </div>
-        <div className="bg-gray-100 p-1">
+        <div className="bg-slate-200 p-1.5">
           <iframe
             src={pdfUrl}
-            className="w-full h-[70vh] bg-white rounded border border-gray-300"
+            className="w-full h-[75vh] rounded-md bg-white"
             title="PDF Viewer"
             frameBorder="0"
             style={{
@@ -85,11 +87,11 @@ const DocumentDetailPage = () => {
   };
 
   const renderChat = () => {
-    return "renderChat";
+    return <ChatInterface />;
   };
 
   const renderAIActions = () => {
-    return "renderAIActions";
+    return <AIActions />;
   };
 
   const renderFlashcardsTab = () => {
@@ -128,7 +130,7 @@ const DocumentDetailPage = () => {
         </Link>
       </div>
 
-      <PageHeader title={document.data.title} />
+      <PageHeader title={document?.data?.title} />
       <Tabs tabs={tabs} activeTab={activeTab} setActiveTab={setActiveTab} />
     </div>
   );
