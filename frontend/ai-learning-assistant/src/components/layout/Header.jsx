@@ -6,7 +6,7 @@ const Header = ({ toggleSidebar }) => {
   const { user } = useAuth();
 
   return (
-    <header className="sticky top-0 z-40 bg-white/80 backdrop-blur-xl border-b border-slate-200/60 h-16">
+    <header className="sticky top-0 z-40 w-full h-16 bg-white/80 backdrop-blur-xl border-b border-slate-200/60">
       <div className="flex items-center justify-between h-full px-6">
         {/* Mobile Menu Button */}
         <button

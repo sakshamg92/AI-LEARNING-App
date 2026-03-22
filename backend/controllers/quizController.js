@@ -163,7 +163,7 @@ export const getQuizResults = async (req, res, next) => {
 
     // Build detailed results
     const detailedResults = quiz.questions.map((question, index) => {
-      const userAnswer = quiz.userAnswers.find(
+      const userAnswer = quiz.userAnswers?.find(
         (a) => a.questionIndex === index,
       );
 
@@ -189,7 +189,7 @@ export const getQuizResults = async (req, res, next) => {
           totalQuestions: quiz.totalQuestions,
           completedAt: quiz.completedAt,
         },
-        Result: detailedResults,
+        results: detailedResults,
       },
       message: "Quiz results retrieved successfully",
     });
