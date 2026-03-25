@@ -38,12 +38,24 @@ const DocumentDetailPage = () => {
     if (!document?.data?.filePath) return null;
 
     const filePath = document.data.filePath;
+    const baseUrl = import.meta.env.VITE_API_URL || "http://localhost:5000";
 
+    // Handle old documents that have hardcoded localhost URLs in the DB
+    if (filePath.startsWith("http://localhost")) {
+      try {
+        const url = new URL(filePath);
+        return `${baseUrl}${url.pathname}`;
+      } catch {
+        return filePath;
+      }
+    }
+
+    // Already a full production URL
     if (filePath.startsWith("http://") || filePath.startsWith("https://")) {
       return filePath;
     }
 
-    const baseUrl = import.meta.env.VITE_API_URL || "http://localhost:5000";
+    // Relative path (new format)
     return `${baseUrl}${filePath.startsWith("/") ? "" : "/"}${filePath}`;
   };
 
