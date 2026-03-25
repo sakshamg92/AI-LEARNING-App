@@ -1,3 +1,4 @@
+<a href="https://ai-learning-app-bice.vercel.app" target="_blank">🚀 Launch AI Learning App</a>
 # 📚 AI Learning Assistant
 
 An intelligent, full-stack learning platform that leverages **Google Gemini AI** to transform PDF study materials into interactive flashcards, quizzes, summaries, and a conversational chatbot — helping students learn smarter, not harder.
