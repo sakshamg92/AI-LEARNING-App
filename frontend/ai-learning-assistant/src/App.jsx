@@ -8,7 +8,7 @@ import {
 
 import LoginPage from "./pages/Auth/LoginPage";
 import NotFoundPage from "./pages/NotFoundPage";
-import RegisterPage from "./pages/auth/RegisterPage";
+import RegisterPage from "./pages/Auth/RegisterPage";
 import DashboardPage from "./pages/Dashboard/DashboardPage";
 import DocumentListPage from "./pages/Documents/DocumentListPage";
 import DocumentDetailPage from "./pages/Documents/DocumentDetailPage";
