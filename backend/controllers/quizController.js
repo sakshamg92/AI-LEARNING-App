@@ -95,7 +95,20 @@ export const submitQuiz = async (req, res, next) => {
 
       if (questionIndex < quiz.questions.length) {
         const question = quiz.questions[questionIndex];
-        const isCorrect = selectedAnswer === question.correctAnswer;
+
+        const normalize = (str) => str?.trim().toLowerCase();
+
+        let correctAnswerText;
+
+        if (question.correctAnswer.startsWith("O")) {
+          const index = parseInt(question.correctAnswer.substring(1)) - 1;
+          correctAnswerText = question.options[index];
+        } else {
+          correctAnswerText = question.correctAnswer;
+        }
+
+        const isCorrect =
+          normalize(selectedAnswer) === normalize(correctAnswerText);
 
         if (isCorrect) correctCount++;
 
