@@ -30,17 +30,19 @@ export const uploadDocument = async (req, res, next) => {
         statusCode: 400,
       });
     }
-
-    // Construct the URL for the uploaded file
-    const baseUrl = `http://localhost:${process.env.PORT || 8000}`;
-    const fileUrl = `${baseUrl}/uploads/documents/${req.file.filename}`;
+// // Construct the URL for the uploaded file
+//     const baseUrl = `http://localhost:${process.env.PORT || 8000}`;
+//     const fileUrl = `${baseUrl}/uploads/documents/${req.file.filename}`;
+    // Store relative path — frontend constructs the full URL using VITE_API_URL
+    const fileUrl = `/uploads/documents/${req.file.filename}`;
 
     // Create document record
     const document = await Document.create({
       userId: req.user._id,
       title,
       fileName: req.file.originalname,
-      filePath: fileUrl, // Store the URL instead of the local path
+            // filePath: fileUrl, // Store the URL instead of the local path
+      filePath: fileUrl, // Relative path — works in both dev and production
       fileSize: req.file.size,
       status: "processing",
     });
